@@ -1,0 +1,12 @@
+{
+  "title": "Nome da tecnologia",
+  "summary": "Como essa tecnologia entra no meu trabalho.",
+  "symbol": "TS",
+  "accent": "blue",
+  "level": "Aprendendo",
+  "order": 10,
+  "details": ["O que sei fazer, o que já construí e o que estou explorando."],
+  "tags": ["Front-end"],
+  "example": false,
+  "draft": false
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Frequência.fm",
+  "subtitle": "Dá o play. Entra no fluxo.",
+  "summary": "Uma rádio de bolso para acompanhar sessões de código. Sem pressa, sem distração, só boas frequências.",
+  "status": "Experimentando",
+  "date": "2026-09-06",
+  "tags": ["JavaScript", "Web Audio", "HTML"],
+  "preview": "radio",
+  "accent": "peach",
+  "order": 2,
+  "details": [
+    "Frequência.fm é um conceito de player para trilhas de concentração. Este registro demonstra como apresentar um experimento no portfólio.",
+    "Quero explorar a Web Audio API, misturar sons ambientes e criar uma interface que lembre os players de música do começo dos anos 2000."
+  ],
+  "nextSteps": ["Controles de reprodução", "Mixagem de sons ambientes", "Atalhos de teclado"],
+  "links": [],
+  "example": true
+}

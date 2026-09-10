@@ -1,0 +1,18 @@
+{
+  "title": "Fragmento",
+  "subtitle": "Um lugar para organizar o caos.",
+  "summary": "Notas, ideias soltas e aquele link que você não quer perder. Tudo no seu lugar, do seu jeito.",
+  "status": "Em desenvolvimento",
+  "date": "2026-09-08",
+  "tags": ["Vue.js", "CSS", "LocalStorage"],
+  "preview": "notes",
+  "accent": "lavender",
+  "order": 1,
+  "details": [
+    "Fragmento é um projeto de exemplo de um organizador pessoal de notas. A ideia é ter um espaço simples para guardar referências, rascunhos e pequenas descobertas.",
+    "O plano é combinar pastas, etiquetas e uma escrita sem distrações. Primeiro, tudo fica no navegador; a sincronização vem depois."
+  ],
+  "nextSteps": ["Editor de notas com Markdown", "Etiquetas e busca", "Exportação dos dados"],
+  "links": [],
+  "example": true
+}

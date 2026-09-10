@@ -1,0 +1,16 @@
+{
+  "title": "Nome do projeto",
+  "subtitle": "Uma frase sobre a ideia.",
+  "summary": "Uma descrição curta do que o projeto faz e por que ele existe.",
+  "status": "Em desenvolvimento",
+  "date": "2026-09-10",
+  "tags": ["Vue.js", "CSS"],
+  "preview": "terminal",
+  "accent": "blue",
+  "order": 10,
+  "details": ["Primeiro parágrafo dos detalhes.", "Outro parágrafo, se precisar."],
+  "nextSteps": ["Uma melhoria que vem por aí"],
+  "links": [{ "label": "Ver código", "url": "https://github.com/" }],
+  "example": false,
+  "draft": false
+}
