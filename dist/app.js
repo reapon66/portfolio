@@ -60,7 +60,7 @@
         <div class="radio-display"><div class="radio-track"><small>NO AR AGORA</small><strong>late night coding</strong><span>lo-fi / beats / café</span></div><div class="equalizer"><i v-for="n in 12" :key="n" :style="{ height: (12 + ((n * 17) % 40)) + 'px' }"></i></div></div>
         <div class="radio-controls"><span>↶ &nbsp; ◀ &nbsp; ▶ &nbsp; ■ &nbsp; ↷</span><span>VOL. ▰▰▰▱▱</span></div>
       </div>
-      <div v-else class="mini-terminal"><div class="mini-bar"><span>reapon@web: ~</span><span>_ □ ×</span></div><div class="terminal-code"><span><b>➜</b> ~/meu-cantinho</span><span>$ npm run dev</span><span class="terminal-success">✓ ideias ganhando vida</span><span>hello, world<span class="terminal-cursor">_</span></span></div></div>
+      <div v-else class="mini-terminal"><div class="mini-bar"><span>reapon@web: ~</span><span>_ □ ×</span></div><div class="terminal-code"><span><b>➜</b> ~/portfolio</span><span>index.html → navegador</span><span class="terminal-success">✓ ideias ganhando vida</span><span>hello, world<span class="terminal-cursor">_</span></span></div></div>
       <span class="preview-corner">{{ post.preview === 'terminal' ? 'FEITO POR AQUI' : 'EM CONSTRUÇÃO' }}</span>
     </div>`
   };
@@ -95,34 +95,25 @@
       const progressCount = computed(() => projects.value.filter(p => p.status !== 'No ar').length);
       const year = new Date().getFullYear();
 
-      async function fetchJson(url) {
-        const response = await fetch(url, { cache: 'no-cache' });
-        if (!response.ok) throw new Error(`Não foi possível ler ${url} (HTTP ${response.status}).`);
-        return response.json();
-      }
-
-      async function load() {
+      function load() {
         loading.value = true; error.value = ''; partialError.value = '';
         try {
-          const [person, manifest] = await Promise.all([fetchJson('./profile.json'), fetchJson('./content/index.json')]);
-          if (!person.name || !person.nickname || !Array.isArray(manifest.projects) || !Array.isArray(manifest.skills)) throw new Error('Confira o perfil e gere novamente o índice de conteúdo.');
+          const content = window.PortfolioContent;
+          const person = content?.profile;
+          if (!person?.name || !person?.nickname || !Array.isArray(content.projects) || !Array.isArray(content.skills)) throw new Error('Confira profile.js e os scripts de conteúdo em index.html.');
           profile.value = person;
-          document.title = `${person.nickname} — meu cantinho na web`;
+          document.title = `Portfólio — ${person.name}`;
           document.querySelector('meta[name="description"]').content = `${person.name} — ${person.intro || person.role || 'Meu cantinho na internet.'}`;
-          const groups = await Promise.all(['projects', 'skills'].map(async kind => {
-            const results = await Promise.allSettled(manifest[kind].map(async file => {
-              if (typeof file !== 'string' || !file.startsWith(`content/${kind}/`) || file.includes('..')) throw new Error('Caminho de post inválido.');
-              return { ...await fetchJson('./' + file), id: file, kind };
-            }));
-            if (results.some(r => r.status === 'rejected')) partialError.value = 'Alguns posts não carregaram. Tente atualizar a página.';
-            return results.filter(r => r.status === 'fulfilled' && !r.value.draft).map(r => r.value).sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.title.localeCompare(b.title, 'pt-BR'));
-          }));
+          if (content.errors.length) partialError.value = 'Alguns posts não carregaram. Confira os arquivos de conteúdo e atualize a página.';
+          const groups = ['projects', 'skills'].map(kind => content[kind].filter(post => !post.draft).slice().sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.title.localeCompare(b.title, 'pt-BR')));
           [projects.value, skills.value] = groups;
         } catch (err) {
-          error.value = location.protocol === 'file:' ? 'Abra o portfólio pelo servidor local: execute npm run dev na pasta do projeto.' : 'Não consegui carregar o conteúdo. Confira os arquivos JSON e tente novamente.';
+          error.value = 'Não consegui carregar o conteúdo. Confira profile.js e os scripts em index.html e tente novamente.';
           console.error(err);
         } finally { loading.value = false; }
       }
+
+      function reload() { window.location.reload(); }
 
       async function openPost(post) {
         selected.value = post;
@@ -152,7 +143,7 @@
         }
       });
 
-      return { profile, projects, skills, loading, error, partialError, selected, dialog, activeSection, progressCount, year, copied, copyError, load, openPost, closeDialog, onDialogClosed, onBackdrop, safeUrl, copyEmail };
+      return { profile, projects, skills, loading, error, partialError, selected, dialog, activeSection, progressCount, year, copied, copyError, reload, openPost, closeDialog, onDialogClosed, onBackdrop, safeUrl, copyEmail };
     },
     template: `
       <div class="site-shell">
@@ -163,7 +154,7 @@
         </header>
 
         <div v-if="loading" class="page-message" role="status"><span class="loading-cursor">▰</span> Abrindo arquivos do portfólio…</div>
-        <div v-else-if="error" class="page-message" role="alert"><h1>Ops, a conexão caiu.</h1><p>{{ error }}</p><button class="button button-primary" @click="load">Tentar novamente</button></div>
+        <div v-else-if="error" class="page-message" role="alert"><h1>Não foi possível abrir o portfólio.</h1><p>{{ error }}</p><button class="button button-primary" @click="reload">Tentar novamente</button></div>
 
         <template v-else-if="profile">
           <div class="address-bar"><span><ui-icon name="globe"/><span class="address-label">Você está em:</span><b>internet</b><span class="crumb">/</span><b>{{ profile.nickname.toLowerCase() }}</b><span class="crumb">/</span><span>home</span></span><span class="address-right"><span class="tiny-star">✳</span> bem-vindo ao meu espaço</span></div>

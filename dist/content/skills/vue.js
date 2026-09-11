@@ -1,5 +1,5 @@
-{
+window.PortfolioContent.register('skills', {
   "title": "Vue.js", "summary": "Peças pequenas, interfaces completas.",
   "symbol": "V", "accent": "mint", "level": "No dia a dia", "order": 3,
   "details": ["Componentes reutilizáveis, estado reativo, diretivas e Composition API."], "tags": ["Componentes", "Reatividade"], "example": true
-}
+});

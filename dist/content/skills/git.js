@@ -1,5 +1,5 @@
-{
+window.PortfolioContent.register('skills', {
   "title": "Git & GitHub", "summary": "Um commit de cada vez.",
   "symbol": "git", "accent": "lavender", "level": "No dia a dia", "order": 5,
   "details": ["Versionamento, branches e colaboração por pull requests."], "tags": ["Versionamento", "Colaboração"], "example": true
-}
+});

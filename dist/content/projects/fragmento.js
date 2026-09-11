@@ -1,4 +1,4 @@
-{
+window.PortfolioContent.register('projects', {
   "title": "Fragmento",
   "subtitle": "Um lugar para organizar o caos.",
   "summary": "Notas, ideias soltas e aquele link que você não quer perder. Tudo no seu lugar, do seu jeito.",
@@ -15,4 +15,4 @@
   "nextSteps": ["Editor de notas com Markdown", "Etiquetas e busca", "Exportação dos dados"],
   "links": [],
   "example": true
-}
+});

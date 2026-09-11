@@ -1,4 +1,4 @@
-{
+window.PortfolioContent.profile = {
   "name": "Carlos Do Ó",
   "nickname": "Reapon",
   "role": "Desenvolvedor & curioso por natureza",
@@ -19,4 +19,4 @@
     { "name": "Instagram", "handle": "fora do terminal", "icon": "camera", "url": "https://www.instagram.com/", "example": true }
   ],
   "exampleContent": true
-}
+};

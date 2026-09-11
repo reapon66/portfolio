@@ -1,4 +1,4 @@
-{
+window.PortfolioContent.register('projects', {
   "title": "Nome do projeto",
   "subtitle": "Uma frase sobre a ideia.",
   "summary": "Uma descrição curta do que o projeto faz e por que ele existe.",
@@ -13,4 +13,4 @@
   "links": [{ "label": "Ver código", "url": "https://github.com/" }],
   "example": false,
   "draft": false
-}
+});

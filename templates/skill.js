@@ -1,4 +1,4 @@
-{
+window.PortfolioContent.register('skills', {
   "title": "Nome da tecnologia",
   "summary": "Como essa tecnologia entra no meu trabalho.",
   "symbol": "TS",
@@ -9,4 +9,4 @@
   "tags": ["Front-end"],
   "example": false,
   "draft": false
-}
+});

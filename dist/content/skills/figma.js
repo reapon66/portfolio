@@ -1,5 +1,5 @@
-{
+window.PortfolioContent.register('skills', {
   "title": "Figma", "summary": "Antes do código, o rascunho.",
   "symbol": "F", "accent": "pink", "level": "Explorando", "order": 6,
   "details": ["Wireframes, protótipos e sistemas visuais para tirar ideias do papel."], "tags": ["UI", "Prototipagem"], "example": true
-}
+});

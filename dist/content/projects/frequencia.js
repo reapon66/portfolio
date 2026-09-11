@@ -1,4 +1,4 @@
-{
+window.PortfolioContent.register('projects', {
   "title": "Frequência.fm",
   "subtitle": "Dá o play. Entra no fluxo.",
   "summary": "Uma rádio de bolso para acompanhar sessões de código. Sem pressa, sem distração, só boas frequências.",
@@ -15,4 +15,4 @@
   "nextSteps": ["Controles de reprodução", "Mixagem de sons ambientes", "Atalhos de teclado"],
   "links": [],
   "example": true
-}
+});
